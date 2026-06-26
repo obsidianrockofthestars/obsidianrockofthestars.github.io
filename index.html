@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dylan Leeson — Builder & Developer</title>
+<meta name="description" content="Dylan Leeson — solo founder and AI-assisted builder. Apps, games, and tools out of St. Joseph, Missouri." />
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: #161b22;
+    --panel-2: #1c2230;
+    --border: #2a3038;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-2: #7ee787;
+    --warn: #d29922;
+    --radius: 12px;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(88,166,255,0.10), transparent 60%),
+      radial-gradient(900px 500px at 110% 0%, rgba(126,231,135,0.06), transparent 55%),
+      var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
+  header { padding: 88px 0 56px; }
+  .eyebrow {
+    font-family: var(--mono);
+    color: var(--accent-2);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    margin: 0 0 14px;
+  }
+  h1 { font-size: clamp(2.1rem, 5vw, 3.3rem); line-height: 1.1; margin: 0 0 16px; letter-spacing: -0.5px; }
+  .tagline { font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--muted); max-width: 640px; margin: 0 0 28px; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--panel);
+    color: var(--text); text-decoration: none; font-size: 0.95rem; font-weight: 500;
+    transition: border-color .15s ease, transform .15s ease, background .15s ease;
+  }
+  .btn:hover { border-color: var(--accent); transform: translateY(-1px); background: var(--panel-2); }
+  .btn.primary { background: var(--accent); color: #06101f; border-color: var(--accent); }
+  .btn.primary:hover { background: #79b8ff; }
+  .btn svg { width: 18px; height: 18px; }
+
+  /* Sections */
+  section { padding: 40px 0; }
+  .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
+  .section-head h2 { font-size: 1.4rem; margin: 0; letter-spacing: -0.3px; }
+  .section-head .hash { font-family: var(--mono); color: var(--accent); opacity: 0.7; }
+  .about p { color: #c9d1d9; max-width: 720px; margin: 0 0 14px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip {
+    font-family: var(--mono); font-size: 0.8rem; color: var(--muted);
+    border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; background: var(--panel);
+  }
+
+  /* Projects */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; display: flex; flex-direction: column; gap: 10px;
+    transition: border-color .15s ease, transform .15s ease;
+    text-decoration: none; color: inherit;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card h3 { margin: 0; font-size: 1.05rem; color: var(--accent); display: flex; align-items: center; gap: 8px; word-break: break-word; }
+  .card .repo-desc { color: var(--muted); font-size: 0.92rem; flex: 1; margin: 0; }
+  .card .meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.82rem; color: var(--muted); font-family: var(--mono); margin-top: 4px; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); margin-right: 2px; vertical-align: middle; }
+  .meta .item { display: inline-flex; align-items: center; gap: 5px; }
+
+  .state { color: var(--muted); font-family: var(--mono); font-size: 0.92rem; padding: 8px 0; }
+  .state.err { color: var(--warn); }
+  .skeleton { background: linear-gradient(90deg, var(--panel) 25%, var(--panel-2) 50%, var(--panel) 75%); background-size: 200% 100%; animation: shimmer 1.4s infinite; border-radius: var(--radius); height: 132px; border: 1px solid var(--border); }
+  @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+  footer { padding: 48px 0 64px; color: var(--muted); font-size: 0.88rem; border-top: 1px solid var(--border); margin-top: 24px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    header { padding: 56px 0 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">// builder · vibe coder · St. Joseph, MO</p>
+    <h1>Dylan Leeson</h1>
+    <p class="tagline">Solo founder shipping apps, games, and tools — built fast with AI in the loop. Live on the app stores, more in the pipeline.</p>
+    <div class="links">
+      <a class="btn primary" href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+        GitHub
+      </a>
+      <a class="btn" href="#projects">Projects</a>
+      <a class="btn" href="mailto:dylanleeson@potionsandfamiliars.com">Contact</a>
+    </div>
+  </header>
+
+  <section class="about" id="about">
+    <div class="section-head"><span class="hash">#</span><h2>About</h2></div>
+    <p>I re-entered tech after a decade away and never looked back. I'm not a from-scratch coder. I'm an operator who builds real, shipped products by directing AI and obsessing over the parts that matter: does it work, does it help people, does it ship.</p>
+    <p>I run multiple small ventures out of St. Joseph, Missouri, and I move fast. My default is "Done &gt; Perfect" — get a working thing in front of real users, then fix it, because you can fix anything, it just takes time.</p>
+    <div class="chips">
+      <span class="chip">React Native / Expo</span>
+      <span class="chip">Supabase</span>
+      <span class="chip">Godot</span>
+      <span class="chip">Python</span>
+      <span class="chip">AI-assisted dev</span>
+      <span class="chip">Mobile</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head"><span class="hash">#</span><h2>Projects</h2></div>
+    <div id="repo-state" class="state">Loading repositories from GitHub…</div>
+    <div class="grid" id="repo-grid" aria-live="polite"></div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="padding:0;">
+      <p>Built and hosted on GitHub Pages. Project list pulls live from my <a href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">public GitHub repositories</a>.</p>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var USERNAME = "obsidianrockofthestars";
+  var grid = document.getElementById("repo-grid");
+  var state = document.getElementById("repo-state");
+
+  // Optional: pin specific repos to the top by exact name (lowercase).
+  var PINNED = []; // e.g. ["my-flagship-repo"]
+
+  // Language color map (subset; falls back to neutral).
+  var LANG_COLORS = {
+    JavaScript: "#f1e05a", TypeScript: "#3178c6", Python: "#3572A5",
+    "C#": "#178600", GDScript: "#355570", HTML: "#e34c26", CSS: "#563d7c",
+    Shell: "#89e051", Java: "#b07219", Kotlin: "#A97BFF", Swift: "#F05138",
+    Dart: "#00B4AB", Go: "#00ADD8", Ruby: "#701516", Rust: "#dea584", C: "#555555",
+    "C++": "#f34b7d", Vue: "#41b883", PHP: "#4F5D95"
+  };
+
+  function showSkeletons(n) {
+    grid.innerHTML = "";
+    for (var i = 0; i < n; i++) {
+      var s = document.createElement("div");
+      s.className = "skeleton";
+      grid.appendChild(s);
+    }
+  }
+
+  function esc(str) {
+    return String(str == null ? "" : str)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+
+  function fmtDate(iso) {
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString(undefined, { year: "numeric", month: "short" });
+    } catch (e) { return ""; }
+  }
+
+  function rank(repo) {
+    var pinIdx = PINNED.indexOf(repo.name.toLowerCase());
+    if (pinIdx !== -1) return [0, pinIdx];
+    // Otherwise sort by recency of push.
+    return [1, -(new Date(repo.pushed_at).getTime())];
+  }
+
+  function render(repos) {
+    repos.sort(function (a, b) {
+      var ra = rank(a), rb = rank(b);
+      if (ra[0] !== rb[0]) return ra[0] - rb[0];
+      return ra[1] - rb[1];
+    });
+
+    grid.innerHTML = "";
+    repos.forEach(function (repo) {
+      var a = document.createElement("a");
+      a.className = "card";
+      a.href = repo.html_url;
+      a.target = "_blank";
+      a.rel = "noopener";
+
+      var langColor = LANG_COLORS[repo.language] || "#8b949e";
+      var metaBits = [];
+      if (repo.language) {
+        metaBits.push('<span class="item"><span class="dot" style="background:' + langColor + '"></span>' + esc(repo.language) + '</span>');
+      }
+      metaBits.push('<span class="item">★ ' + repo.stargazers_count + '</span>');
+      if (repo.pushed_at) {
+        metaBits.push('<span class="item">updated ' + esc(fmtDate(repo.pushed_at)) + '</span>');
+      }
+
+      a.innerHTML =
+        '<h3>' + esc(repo.name) + '</h3>' +
+        '<p class="repo-desc">' + (repo.description ? esc(repo.description) : "No description yet.") + '</p>' +
+        '<div class="meta">' + metaBits.join("") + '</div>';
+      grid.appendChild(a);
+    });
+  }
+
+  showSkeletons(6);
+
+  fetch("https://api.github.com/users/" + USERNAME + "/repos?per_page=100&sort=updated", {
+    headers: { "Accept": "application/vnd.github+json" }
+  })
+    .then(function (res) {
+      if (!res.ok) throw new Error("GitHub API returned " + res.status);
+      return res.json();
+    })
+    .then(function (repos) {
+      // Drop forks and archived repos; keep originals.
+      var filtered = repos.filter(function (r) { return !r.fork && !r.archived; });
+      if (filtered.length === 0) {
+        state.textContent = "No public repositories to show yet — check back soon.";
+        grid.innerHTML = "";
+        return;
+      }
+      state.style.display = "none";
+      render(filtered);
+    })
+    .catch(function (err) {
+      grid.innerHTML = "";
+      state.className = "state err";
+      state.innerHTML = "Couldn't load repositories live (" + esc(err.message) +
+        "). View them directly on <a href='https://github.com/" + USERNAME +
+        "?tab=repositories' target='_blank' rel='noopener' style='color:var(--accent)'>GitHub</a>.";
+    });
+})();
+</script>
+</body>
+</html>
