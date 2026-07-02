@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dylan Leeson — Builder & Developer</title>
-<meta name="description" content="Dylan Leeson — solo founder and AI-assisted builder. Apps, games, and tools out of St. Joseph, Missouri." />
+<meta name="description" content="Dylan Leeson — solo founder and AI-assisted builder. Apps, games, and tools out of St. Joseph, Missouri. All my apps, links, and projects in one place." />
 <style>
   :root {
     --bg: #0d1117;
@@ -64,6 +64,7 @@
   .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 24px; }
   .section-head h2 { font-size: 1.4rem; margin: 0; letter-spacing: -0.3px; }
   .section-head .hash { font-family: var(--mono); color: var(--accent); opacity: 0.7; }
+  .section-sub { color: var(--muted); font-size: 0.95rem; margin: -16px 0 24px; max-width: 720px; }
   .about p { color: #c9d1d9; max-width: 720px; margin: 0 0 14px; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
   .chip {
@@ -71,7 +72,7 @@
     border: 1px solid var(--border); border-radius: 999px; padding: 4px 12px; background: var(--panel);
   }
 
-  /* Projects */
+  /* Cards */
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
   .card {
     background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
@@ -85,6 +86,27 @@
   .card .meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 0.82rem; color: var(--muted); font-family: var(--mono); margin-top: 4px; }
   .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--muted); margin-right: 2px; vertical-align: middle; }
   .meta .item { display: inline-flex; align-items: center; gap: 5px; }
+
+  /* Live product cards */
+  .live-card { cursor: default; }
+  .live-card:hover { transform: none; }
+  .badge {
+    display: inline-block; font-family: var(--mono); font-size: 0.72rem;
+    padding: 2px 10px; border-radius: 999px; letter-spacing: 0.4px;
+    border: 1px solid var(--accent-2); color: var(--accent-2); background: rgba(126,231,135,0.08);
+  }
+  .badge.soon { border-color: var(--warn); color: var(--warn); background: rgba(210,153,34,0.08); }
+  .card-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  .mini-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 500;
+    border: 1px solid var(--border); background: var(--panel-2); color: var(--text);
+    text-decoration: none; transition: border-color .15s ease;
+  }
+  .mini-btn:hover { border-color: var(--accent); }
+
+  /* Elsewhere */
+  .elsewhere-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 
   .state { color: var(--muted); font-family: var(--mono); font-size: 0.92rem; padding: 8px 0; }
   .state.err { color: var(--warn); }
@@ -106,13 +128,14 @@
   <header>
     <p class="eyebrow">// builder · vibe coder · St. Joseph, MO</p>
     <h1>Dylan Leeson</h1>
-    <p class="tagline">Solo founder shipping apps, games, and tools — built fast with AI in the loop. Live on the app stores, more in the pipeline.</p>
+    <p class="tagline">Solo founder shipping apps, games, and tools — built fast with AI in the loop. Live on the app stores, more in the pipeline. Everything I make, in one place.</p>
     <div class="links">
-      <a class="btn primary" href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">
+      <a class="btn primary" href="#live">Live Apps</a>
+      <a class="btn" href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
         GitHub
       </a>
-      <a class="btn" href="#projects">Projects</a>
+      <a class="btn" href="#elsewhere">Socials</a>
       <a class="btn" href="mailto:dylanleeson@potionsandfamiliars.com">Contact</a>
     </div>
   </header>
@@ -131,15 +154,65 @@
     </div>
   </section>
 
+  <section id="live">
+    <div class="section-head"><span class="hash">#</span><h2>Live &amp; Shipping</h2></div>
+    <p class="section-sub">The real products — hand-picked, not scraped. Most of my production code lives in private repos; this is where it ships to.</p>
+    <div class="grid">
+
+      <div class="card live-card">
+        <h3>Downtown Vibes <span class="badge">LIVE</span></h3>
+        <p class="repo-desc">Hyperlocal business discovery for downtown St. Joseph — locally owned spots only, no chains. Events board, flash sales, food-truck tracking. Live on both app stores.</p>
+        <div class="card-links">
+          <a class="mini-btn" href="https://apps.apple.com/app/id6761736773" target="_blank" rel="noopener">App Store</a>
+          <a class="mini-btn" href="https://play.google.com/store/apps/details?id=com.potionsandfamiliars.downtownvibes" target="_blank" rel="noopener">Google Play</a>
+          <a class="mini-btn" href="https://downtownvibes.app" target="_blank" rel="noopener">downtownvibes.app</a>
+        </div>
+      </div>
+
+      <div class="card live-card">
+        <h3>PostMaster Pete <span class="badge">LIVE</span></h3>
+        <p class="repo-desc">A math adventure for kids (grades 3-5) on the Cyber Pony Express — ride from St. JoCypher to SacroMoonto solving real math along the trail. 100% offline, no ads, no data collection. $2.99.</p>
+        <div class="card-links">
+          <a class="mini-btn" href="https://apps.apple.com/us/app/postmaster-pete/id6779746599" target="_blank" rel="noopener">App Store</a>
+          <a class="mini-btn" href="https://play.google.com/store/apps/details?id=com.potionsandfamiliars.postmasterpete" target="_blank" rel="noopener">Google Play</a>
+        </div>
+      </div>
+
+      <div class="card live-card">
+        <h3>Night Owl Guild <span class="badge">LIVE</span></h3>
+        <p class="repo-desc">Grimdark lore shorts on YouTube — single-faction narratives in an elevated register, built with a fully local $0 production pipeline.</p>
+        <div class="card-links">
+          <a class="mini-btn" href="https://www.youtube.com/@obsidianrockofthestars" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="elsewhere">
+    <div class="section-head"><span class="hash">#</span><h2>Elsewhere</h2></div>
+    <p class="section-sub">Follow the build. AI Dylan is my AI twin — an AI system I built that posts and works alongside me. It always discloses what it is.</p>
+    <div class="elsewhere-grid">
+      <a class="btn" href="https://www.instagram.com/obsidianrockofthestars" target="_blank" rel="noopener">AI Dylan — Instagram</a>
+      <!-- VERIFY-BEFORE-PUSH: FB page ID 1243334355521861 (AI Dylan) — swap in the vanity URL if the page has one -->
+      <a class="btn" href="https://www.facebook.com/profile.php?id=1243334355521861" target="_blank" rel="noopener">AI Dylan — Facebook</a>
+      <a class="btn" href="https://www.threads.net/@obsidianrockofthestars" target="_blank" rel="noopener">AI Dylan — Threads</a>
+      <a class="btn" href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:dylanleeson@potionsandfamiliars.com">Email</a>
+    </div>
+  </section>
+
   <section id="projects">
-    <div class="section-head"><span class="hash">#</span><h2>Projects</h2></div>
+    <div class="section-head"><span class="hash">#</span><h2>Open Source</h2></div>
+    <p class="section-sub">Public repos, pulled live from GitHub.</p>
     <div id="repo-state" class="state">Loading repositories from GitHub…</div>
     <div class="grid" id="repo-grid" aria-live="polite"></div>
   </section>
 
   <footer>
     <div class="wrap" style="padding:0;">
-      <p>Built and hosted on GitHub Pages. Project list pulls live from my <a href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">public GitHub repositories</a>.</p>
+      <p>Built and hosted on GitHub Pages. Open-source list pulls live from my <a href="https://github.com/obsidianrockofthestars" target="_blank" rel="noopener">public GitHub repositories</a>.</p>
+      <p>Some of what I publish is made with — or by — Clone Dylan, my AI twin. When it's the AI talking, it says so. That's the rule.</p>
     </div>
   </footer>
 
